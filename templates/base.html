@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
+
+</head>
+<body>
+<!-- 네비게이션바 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'jiapich:list' %}"><img class="img-fluid custom-img" src="/static/image/CICS블랙로고.png"></a>
+{#        <button class="navbar-toggler" type="button"#}
+{#                data-bs-toggle="collapse"#}
+{#                data-bs-target="#navbarSupportedContent"#}
+{#                aria-controls="navbarSupportedContent"#}
+{#                aria-expanded="false"#}
+{#                aria-label="Toggle navigation">#}
+{#            <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+        <div class="collapse navbar-collapse padding-top" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item m-auto fw-bold">
+                    <a class="nav-link" href="#">전주세계무형유산대상</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item fw-bold">
+                    <a class="nav-link" href="#">2023 JIAPICH</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item fw-bold">
+                    <a class="nav-link" href="#">JIAPICH 다시보기</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item fw-bold">
+                    <a class="nav-link" href="#">JIAPICH 콜로키움</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="flex-row">
+                    <li class="d-flex flex-column ">
+                        <span><a class="nav-link small lan" href="#">한국어</a></span>
+                        <span><a class="nav-link small lan" href="#">english</a></span>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#"><img src="/static/image/전체보기.svg"></a>
+                    </li>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-gray border-bottom">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item ms-auto fw-bold">
+                <a class="nav-link" href="#">-인사말</a>
+            </li>
+            <li class="nav-item ms-auto fw-bold">
+                <a class="nav-link" href="#">-진행과정</a>
+            </li>
+            <li class="nav-item ms-auto fw-bold">
+                <a class="nav-link" href="#">-상패제작</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="footer-logo">
+          <img src="/static/image/jiapich_footer.png" alt="Logo">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="footer-logo-group">
+          <div class="footer-logo-item">
+            <img src="/static/image/한바탕전주_영문_02.png" alt="Logo 1">
+          </div>
+          <div class="footer-logo-item">
+            <img src="/static/image/자산%203CICS블랙로고.png" alt="Logo 2">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 ms-auto">
+        <div class="social-icons">
+          <a href="#"><img src="/static/image/유튜브%20로고.png" class="fab fa-facebook"></img></a>
+          <a href="#"><img src="/static/image/페이스북%20로고.png" class="fab fa-twitter"></img></a>
+          <a href="#"><img src="/static/image/왓츠앱%20로고.png" class="fab fa-instagram"></img></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="company-info">
+          <p>(54898)전북 전주시 덕진구 권삼득로 285, 전주세계무형유산대상 사무국</p>
+          <p>Phone number and email address</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+    const form = document.querySelector('.footer__subscribe form');
+    const emailInput = form.querySelector('input[type="email"]');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const email = emailInput.value;
+      // 이메일 주소를 이용하여 구독 요청을 보내는 코드를 작성
+      // ...
+      form.reset();
+    });
+</script>
+</body>
+</html>

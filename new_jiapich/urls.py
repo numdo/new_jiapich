@@ -22,5 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jiapich/', include('jiapich.urls')),
     path('formList/', views.lists, name='lists'),
-
 ]
