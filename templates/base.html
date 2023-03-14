@@ -14,7 +14,7 @@
 <!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-body border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'jiapich:list' %}"><img class="img-fluid custom-img" src="/static/image/CICS블랙로고.png"></a>
+        <a class="navbar-brand" href="{% url 'jiapich:list' %}"><img class="img-fluid" src="/static/image/CICS블랙로고.png"></a>
 {#        <button class="navbar-toggler" type="button"#}
 {#                data-bs-toggle="collapse"#}
 {#                data-bs-target="#navbarSupportedContent"#}
@@ -87,15 +87,15 @@
       <div class="col-md-6">
         <div class="footer-logo-group">
           <div class="footer-logo-item">
-            <img src="/static/image/한바탕전주_영문_02.png" alt="Logo 1">
+            <img class="custom-img" src="/static/image/한바탕전주_영문_02@2x.png" alt="Logo 1">
           </div>
           <div class="footer-logo-item">
-            <img src="/static/image/자산%203CICS블랙로고.png" alt="Logo 2">
+              <img src="/static/image/자산%203CICS블랙로고.png" alt="Logo 2">
           </div>
         </div>
       </div>
       <div class="col-md-3 ms-auto">
-        <div class="social-icons">
+        <div class="social-icons ms-auto">
           <a href="#"><img src="/static/image/유튜브%20로고.png" class="fab fa-facebook"></img></a>
           <a href="#"><img src="/static/image/페이스북%20로고.png" class="fab fa-twitter"></img></a>
           <a href="#"><img src="/static/image/왓츠앱%20로고.png" class="fab fa-instagram"></img></a>
@@ -105,8 +105,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="company-info">
-          <p>(54898)전북 전주시 덕진구 권삼득로 285, 전주세계무형유산대상 사무국</p>
-          <p>Phone number and email address</p>
+
+            <div class="row"><p class="col-1 fw-bold">주소 : </p>(54898)전북 전주시 덕진구 권삼득로 285, 전주세계무형유산대상 사무국</div>
+            <div class="row">
+                <p class="col-1 fw-bold">이메일 : </p>cics.center@gmail.com
+                <p class="col-1 fw-bold">전 화 :  </p>1522-3146
+            </div>
         </div>
       </div>
     </div>

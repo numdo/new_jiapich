@@ -3,19 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/assets/js/pagination_form.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
 <body>
 
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for field in form %}
+        {% if field.errors %}
+        <div>
+            <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+        <!-- 오류표시 End -->
+{#    1페이지 시작#}
+    <fieldset>
+        <div class="mb-lg-3">
+            <label class="fw-bold">A. 기본정보 (General background Information)<br>
+            A. 1. 단체정보(Identification of the Candidate)</label>
+             <div class="mb-3">
+                <label for="organization" class="form-label required-star">
+                    <i class="bi bi-dot"></i>단체 이름 (Name of Organization/Group/Community)</label>
+                <input type="text" class="form-control " name="organization" id="organization"
+                       value="{{ form.subject.value|default_if_none:'' }}" required="required">
+            </div>
+            <div class="mb-3">
+                <label for="representative" class="form-label required-star">
+                    <i class="bi bi-dot"></i>대표자 이름 (Name of Representative)</label>
+                <input type="text" class="form-control" name="organization" id="organization"
+                       value="{{ form.subject.value|default_if_none:'' }}" required="required">
+            </div>
+            <div class="mb-3">
+                <label for="establishment_Date" class="form-label required-star">
+                    <i class="bi bi-dot"></i>
+                    설립일 및 무형유산분야 관련 단체 이력사항 (300자 이내)
+                    <br>(Establishment Date and History of Organization / Group / Community in relation to ICH)</label>
+                <textarea class="form-control" name="establishment_Date"
+                          id="establishment_Date" rows="8" required="required" maxlength="300">{{ form.content.value|default_if_none:'' }}</textarea>
+            </div>
+        </div>
+        <div class="mb-lg-3">
+            <label class="fw-bold">A.2. 단체 주소(Address of the Candidate)</label>
+            <div class="row">
+                <div class="col-6">
+                    <label for="continent" class="form-label required-star">
+                        <i class="bi bi-dot"></i>대륙 (Continent)</label>
+                    <select type="text" class="form-select" name="nation" id="nation" required="required">
+                        <option value="" hidden="">대륙를 선택해 주세요.</option>
+                        <option value="아시아(Asia)">아시아(Asia)</option>
+                        <option value="북미/유럽(NA/Europe)">북미/유럽(NA/Europe)</option>
+                        <option value="아프리카(Africa)">아프리카(Africa)</option>
+                        <option value="아랍(Arab)" >아랍(Arab)</option>
+                        <option value="남미/카리브해(SA/Caribbean)">남미/카리브해(SA/Caribbean)</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label for="nation" class="form-label required-star">
+                        <i class="bi bi-dot"></i>국가(Nation)</label>
+                    <input type="text" class="form-control " name="continent" id="continent"
+                           value="{{ form.subject.value|default_if_none:'' }}" required="required">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="postal_address" class="form-label required-star">
+                    <i class="bi bi-dot"></i>주소 (Postal address)</label>
+                <input type="text" class="form-control " name="postal_address" id="postal_address"
+                       value="{{ form.subject.value|default_if_none:'' }}" required="required">
+            </div>
+            <div class="mb-3">
+                <label for="email_address" class="form-label required-star">
+                    <i class="bi bi-dot"></i>이메일 (Email address)</label>
+                <input type="text" class="form-control" name="email_address" id="email_address"
+                       value="{{ form.subject.value|default_if_none:'' }}" required="required">
+            </div>
+            <div class="mb-3">
+                <label for="website" class="form-label required-star">
+                    <i class="bi bi-dot"></i>홈페이지 혹은 개인 SNS (Website or personal SNs address)</label>
+                <input type="text" class="form-control" name="website" id="website"
+                       value="{{ form.subject.value|default_if_none:'' }}" required="required">
+            </div>
+            <div class="mb-3">
+                <label for="telephone_number" class="form-label required-star">
+                    <i class="bi bi-dot"></i>전화번호(Telephone number)</label>
+                <input type="text" class="form-control" name="telephone_number" id="telephone_number"
+                       value="{{ form.subject.value|default_if_none:'' }}" required="required">
+            </div>
+        </div>
+    </fieldset>
+{#    1페이지 끝#}
+{#    2페이지 시작#}
+    <fieldset>
+        <div class="mb-3">
+            <label for="training" class="form-label">
+                <i class="bi bi-dot"></i>
+                B. 무형유산 보호와 관련된 단체의 성과
+                <br>(Notable accomplishments of the candidate related to the safeguarding of ICH)</label>
+            <label>
+                B.1. 무형유산 보호를 위한 단체의 무형유산 연수 또는 교육활동 (500자 이내)
+                <br>(Describe ICH training or educational activities to the transmission of ICH)
+            </label>
+            <textarea class="form-control required-star" name="training"
+                      id="training" rows="8" required="required" maxlength="300">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+    </fieldset>
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
+    <script id="template" type="text/template">
+      <div>
+        <button class="previous" type="button">&lt;</button>
+        <span><%= index %></span>
+        <button class="next" type="button">&gt;</button>
+        <a class="show-all" href="#">Show all pages</a>
+        <progress value="<%= progress %>"></progress>
+      </div>
+    </script>
 </div>
+
 {% endblock %}
 </body>
+
 </html>
