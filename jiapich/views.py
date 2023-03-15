@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 from formtools.wizard.views import SessionWizardView
+from .forms import pageStep1,pageStep2,pageStep3,pageStep4,pageStep5,pageStep6
 def lists(request):
     submitForm_list = submitForm.objects.order_by('-created_time')
     context = {'submitForm_list' : submitForm_list}
@@ -26,10 +27,10 @@ def form_create(request):
     return render(request,'jiapich/form_insert.html',{'form':form})
 class MyFormWizardView(SessionWizardView):
     templates_name = 'form_insert.html'
-    form_list = [ContactInfoForm, WorkInfoForm]
+    form_list = [pageStep1,pageStep2,pageStep3,pageStep4,pageStep5,pageStep6]
     file_storage = None
     success_url = reverse_lazy('form-wizard-done')
 
     def done(self, form_list, **kwargs):
         # do something with the form data
-        return render(self.request, 'form_list.html', {'form_data': [form.cleaned_data for form in form_list]})
+        return render(self.request, '', {'form_data': [form.cleaned_data for form in form_list]})

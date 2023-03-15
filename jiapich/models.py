@@ -8,6 +8,7 @@
 # pip install pyopenssl ndg-httpsclient pyasn1
 
 from django.db import models
+from django.utils import timezone
 
 
 # 모델 : 테이블 정의
@@ -39,8 +40,8 @@ class submitForm(models.Model):
     agreement = models.FileField('agreement',upload_to="%Y%m%d")
     curriculum_vitae = models.FileField('curriculum_vitae',upload_to="%Y%m%d")
     supporting_document = models.FileField('supporting_document',upload_to="%Y%m%d")
-    created_time = models.DateTimeField('created_time', auto_now_add=True)
-    updated_time = models.DateTimeField('updated_time', auto_now=True)
+    created_time = models.DateTimeField('created_time', default=timezone.now())
+    updated_time = models.DateTimeField('updated_time', default=timezone.now())
     delete = models.BooleanField('delete',default=False)
 
     def __str__(self):

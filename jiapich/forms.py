@@ -20,7 +20,7 @@ class Form(forms.ModelForm):
             , 'telephone_number', 'training', 'promoting', 'cooperation', 'safeguarding', 'social_impact',
                   'cultural_diversity'
             , 'harmony_building', 'leadership', 'viability', 'sustainability', 'disaster_management', 'awards',
-                  'candidate', 'recommendation'
+                  'candidate', 'recommendation','agreement'
             , 'curriculum_vitae', 'supporting_document']
 
 class pageStep1(forms.ModelForm):
@@ -53,4 +53,5 @@ class pageStep5(forms.ModelForm):
 class pageStep6(forms.ModelForm):
     class Meta:
         model = submitForm
-        fields = []
+        fields = ['recommendation','agreement'
+            , 'curriculum_vitae', 'supporting_document']
